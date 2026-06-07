@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#05060c" />
+<title>CVPR 2026 · An Atlas of Vision</title>
+<meta name="description" content="An interactive constellation of every CVPR 2026 paper. Explore 4,069 papers as a living graph of ideas." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Living star-field graph -->
+  <canvas id="stage"></canvas>
+  <div id="grain" aria-hidden="true"></div>
+
+  <!-- Loading veil -->
+  <div id="veil">
+    <div class="veil-inner">
+      <div class="veil-mark">CVPR<span>·</span>2026</div>
+      <div class="veil-bar"><i></i></div>
+      <div class="veil-status" id="veilStatus">Charting the constellation…</div>
+    </div>
+  </div>
+
+  <!-- Masthead -->
+  <header id="masthead">
+    <div class="brand">
+      <div class="brand-kicker">Computer Vision and Pattern Recognition</div>
+      <h1 class="brand-title">An Atlas of Vision</h1>
+      <div class="brand-sub"><b id="countPapers">4,069</b> papers · <span id="countTopics">24</span> constellations · <span id="countLinks">7,089</span> threads</div>
+    </div>
+  </header>
+
+  <!-- Search -->
+  <div id="searchWrap">
+    <div class="search-pill">
+      <svg viewBox="0 0 24 24" class="ic" aria-hidden="true"><path d="M21 21l-4.3-4.3M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg>
+      <input id="search" type="search" placeholder="Search papers, authors, topics…" autocomplete="off" spellcheck="false" />
+      <button id="searchClear" class="search-clear" aria-label="Clear">&times;</button>
+    </div>
+    <div id="results"></div>
+  </div>
+
+  <!-- Controls -->
+  <div id="controls">
+    <button class="ctl" id="btnLegend" title="Constellations" aria-label="Toggle legend">
+      <svg viewBox="0 0 24 24"><circle cx="6" cy="7" r="2.4"/><circle cx="6" cy="17" r="2.4"/><path d="M11 7h8M11 17h8"/></svg>
+    </button>
+    <button class="ctl" id="btnReset" title="Reset view" aria-label="Reset view">
+      <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v4h4"/></svg>
+    </button>
+    <button class="ctl" id="btnLinks" title="Toggle threads" aria-label="Toggle threads">
+      <svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M7.6 7.6 16.4 16.4M8 6h8M6 8v8"/></svg>
+    </button>
+  </div>
+
+  <!-- Legend / constellation index -->
+  <aside id="legend" class="hidden">
+    <div class="legend-head">
+      <span>Constellations</span>
+      <button id="legendClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="legend-body" id="legendBody"></div>
+    <div class="legend-foot"><button id="legendAll">Show all</button></div>
+  </aside>
+
+  <!-- Paper detail sheet -->
+  <section id="sheet" class="hidden" aria-live="polite">
+    <button id="sheetClose" aria-label="Close">&times;</button>
+    <div class="sheet-scroll" id="sheetScroll"></div>
+  </section>
+  <div id="sheetScrim" class="hidden"></div>
+
+  <div id="hint">drag to roam · pinch / scroll to zoom · tap a star</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
